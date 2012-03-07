@@ -1,6 +1,8 @@
 Lists::Application.routes.draw do
-  resources :items
-
+  resources :lists do 
+    resources :items
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
