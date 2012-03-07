@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
     @list = List.find(params[:list_id])
+    @items = @list.items
     
     respond_to do |format|
       format.html # index.html.erb
@@ -49,11 +49,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
+        format.html { redirect_to list_items_path(@list), notice: 'Item was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,11 +64,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to list_items_path(@list), notice: 'Item was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,8 +79,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
+      format.html { redirect_to list_items_url }
     end
   end
 end
