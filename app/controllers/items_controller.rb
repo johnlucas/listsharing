@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @list = List.find(params[:list_id])
-    @items = @list.items
+    @items = @list.items.order(:votes).reverse
     
     respond_to do |format|
       format.html # index.html.erb
