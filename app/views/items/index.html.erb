@@ -1,4 +1,15 @@
 <div class="page-header"><h1><%= @list.name %></h1></div>
+	<% if flash[:alert] %>
+	<div class="alert">
+		<a class="close" data-dismiss="alert">×</a>
+		<strong>Warning!</strong> <%= flash[:alert] %>
+	</div>
+	<% elsif flash[:notice] %>
+	<div class="alert alert-info">
+		<a class="close" data-dismiss="alert">×</a>
+		<%= flash[:notice] %>
+	</div>
+	<% end %>
     <% @items.each do |item| %>
 	<div class="row">
 		<div class="span1" style="text-align:center">

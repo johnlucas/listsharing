@@ -88,8 +88,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
     
-    @item.votes += 1
-    @item.save
+    if not session[:voted].include? @item.id
+      @item.votes += 1
+      @item.save
+      session[:voted] << @item.id
+      flash[:notice] = "Thanks for voting!"
+    else
+      flash[:alert] = "You have voted this item already!"
+    end
     
     respond_to do |format|
       format.html { redirect_to list_items_path(@list) }
@@ -100,9 +106,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
     
-    @item.votes -= 1
-    @item.save
-    
+    if not session[:voted].include? @item.id
+      @item.votes -= 1
+      @item.save
+      session[:voted] << @item.id 
+      flash[:notice] = "Thanks for voting!"
+    else
+      flash[:alert] = "You have voted this item already!"
+    end
+        
     respond_to do |format|
       format.html { redirect_to list_items_path(@list) }
     end
