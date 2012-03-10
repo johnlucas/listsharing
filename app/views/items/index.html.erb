@@ -2,7 +2,9 @@
     <% @items.each do |item| %>
 	<div class="row">
 		<div class="span1" style="text-align:center">
-			<i class="icon-chevron-up"></i>
+			<%= link_to voteup_list_item_path(@list, item) do %>
+				<i class="icon-chevron-up"></i>
+			<% end %>
 		</div>
 	</div>
 	<div class="row">
@@ -16,7 +18,9 @@
 	</div>
 	<div class="row">
 		<div class="span1" style="text-align:center">
-			<i class="icon-chevron-down"></i>
+			<%= link_to votedown_list_item_path(@list, item) do %>
+				<i class="icon-chevron-down"></i>
+			<% end %>
 		</div>
 	</div>
     <% end %>

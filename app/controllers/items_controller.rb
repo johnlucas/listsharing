@@ -83,4 +83,28 @@ class ItemsController < ApplicationController
       format.html { redirect_to list_items_url }
     end
   end
+  
+  def voteup
+    @item = Item.find(params[:id])
+    @list = List.find(params[:list_id])
+    
+    @item.votes += 1
+    @item.save
+    
+    respond_to do |format|
+      format.html { redirect_to list_items_path(@list) }
+    end
+  end
+  
+  def votedown
+    @item = Item.find(params[:id])
+    @list = List.find(params[:list_id])
+    
+    @item.votes -= 1
+    @item.save
+    
+    respond_to do |format|
+      format.html { redirect_to list_items_path(@list) }
+    end
+  end
 end

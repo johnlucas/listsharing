@@ -1,6 +1,11 @@
 Lists::Application.routes.draw do
   resources :lists do 
-    resources :items
+    resources :items do
+      member do
+        get 'voteup'
+        get 'votedown'
+      end
+    end
   end
   
   # The priority is based upon order of creation:
