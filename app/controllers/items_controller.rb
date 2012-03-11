@@ -88,10 +88,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
     
-    if not session[:voted].include? @item.id
+    if not session[:items_voted].include? @item.id
       @item.votes += 1
       @item.save
-      session[:voted] << @item.id
+      session[:items_voted] << @item.id
       flash[:notice] = "Thanks for voting!"
     else
       flash[:alert] = "You have voted this item already!"
@@ -106,10 +106,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
     
-    if not session[:voted].include? @item.id
+    if not session[:items_voted].include? @item.id
       @item.votes -= 1
       @item.save
-      session[:voted] << @item.id 
+      session[:items_voted] << @item.id 
       flash[:notice] = "Thanks for voting!"
     else
       flash[:alert] = "You have voted this item already!"
