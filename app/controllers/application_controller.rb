@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   private
   
     def init_session
-      session[:voted] ||= []
+      session[:items_voted] ||= []
+      session[:lists_voted] ||= []
     end
 end

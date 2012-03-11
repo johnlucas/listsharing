@@ -80,4 +80,38 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def voteup
+    @list = List.find(params[:id])
+    
+    if not session[:lists_voted].include? @list.id
+      @list.votes += 1
+      @list.save
+      session[:lists_voted] << @list.id
+      flash[:notice] = "Thanks for voting!"
+    else
+      flash[:alert] = "You have voted this list already!"
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to lists_path }
+    end
+  end
+  
+  def votedown
+    @list = List.find(params[:id])
+    
+    if not session[:lists_voted].include? @list.id
+      @list.votes -= 1
+      @list.save
+      session[:lists_voted] << @list.id
+      flash[:notice] = "Thanks for voting!"
+    else
+      flash[:alert] = "You have voted this list already!"
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to lists_path }
+    end
+  end
 end

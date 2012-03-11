@@ -6,6 +6,10 @@ Lists::Application.routes.draw do
         get 'votedown'
       end
     end
+    member do
+      get 'voteup'
+      get 'votedown'
+    end
   end
   
   # The priority is based upon order of creation:
