@@ -8,10 +8,16 @@
         <%= f.text_field :name, :class => 'text_field' %>
       </div>
     </div>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :description, :class => 'text_field' %>
+      </div>
+    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', list_items_path(@list), :class => 'btn' %>
+      <%= link_to 'Cancel', list_item_path(@list, @item), :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>
