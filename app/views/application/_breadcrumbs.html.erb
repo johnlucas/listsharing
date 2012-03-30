@@ -1,0 +1,9 @@
+<div class="page-header">
+<% for breadcrumb in @breadcrumbs %>
+		<% if breadcrumb.has_key?("last_child") %>
+			<span class="title"><%= breadcrumb['name'] %></span>
+		<% else %>
+			<span class="title"><a href="<%= breadcrumb['url'] %>"><%= breadcrumb['name'] %></a> >> </span>
+		<% end %>
+<% end %>
+</div>

@@ -1,30 +1,33 @@
 class ItemsController < ApplicationController
+  
   # GET /items
-  # GET /items.json
   def index
     @list = List.find(params[:list_id])
     @items = @list.items.order(:votes).reverse
     
+    @breadcrumbs[0] = {'name' => "Lists", 'url' => "/" }  
+    @breadcrumbs << {'name' => @list.name, 'last_child' => true}
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
     end
   end
 
   # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
 
+    @breadcrumbs[0] = {'name' => "Lists", 'url' => "/" }
+    @breadcrumbs << {'name' => @list.name, 'url' => list_items_path(@list) }
+    @breadcrumbs << {'name' => @item.name, 'last_child' => true}
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @item }
     end
   end
 
   # GET /items/new
-  # GET /items/new.json
   def new
     @item = Item.new
     @list = List.find(params[:list_id])
@@ -38,10 +41,14 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
+    
+    @breadcrumbs[0] = {'name' => "Lists", 'url' => "/" }
+    @breadcrumbs << {'name' => @list.name, 'url' => list_items_path(@list) }
+    @breadcrumbs << {'name' => @item.name, 'url' => list_item_path(@list,@item)}    
+    @breadcrumbs << {'name' => 'Edit', 'last_child' => true}    
   end
 
   # POST /items
-  # POST /items.json
   def create
     @list = List.find(params[:list_id])
     @item = Item.new(params[:item])
@@ -57,7 +64,6 @@ class ItemsController < ApplicationController
   end
 
   # PUT /items/1
-  # PUT /items/1.json
   def update
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
@@ -72,7 +78,6 @@ class ItemsController < ApplicationController
   end
 
   # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item = Item.find(params[:id])
     @list = List.find(params[:list_id])
@@ -118,4 +123,5 @@ class ItemsController < ApplicationController
       format.html { redirect_to list_items_path(@list) }
     end
   end
+  
 end

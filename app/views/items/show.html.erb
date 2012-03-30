@@ -1,7 +1,10 @@
-<div class="page-header"><h1><%= @item.name %></h1></div>
 <div class="row">
-	<div class="span12"><%= @item.description %></div>
+	<div class="span12"><%= @item.description ? @item.description : "--"  %></div>
 </div>
+<br />
+<%= link_to 'Edit', edit_list_item_path(@list, @item), :class => 'btn btn-primary' %>
+<%= link_to 'Back', list_items_path(@list), :class => 'btn'  %>
+<br />
 <br />
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -16,7 +19,3 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-<br/>
-<%= link_to 'Edit', edit_list_item_path(@list, @item), :class => 'btn btn-primary' %>
-<%= link_to 'Back', list_items_path(@list), :class => 'btn'  %>
