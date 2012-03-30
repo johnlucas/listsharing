@@ -14,8 +14,12 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel',list_items_path(@list), :class => 'btn' %>
+	<%= f.submit nil, :class => 'btn btn-primary' %>
+	<% if @item.id.nil? %>
+		<%= link_to 'Cancel',list_items_path(@list), :class => 'btn' %>
+	<% else %>
+		<%= link_to 'Cancel',list_item_path(@list,@item), :class => 'btn' %>
+	<% end %>
     </div>
   </fieldset>
 <% end %>
