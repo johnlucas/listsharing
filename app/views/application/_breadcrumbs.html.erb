@@ -1,9 +1,26 @@
 <div class="page-header">
-<% for breadcrumb in @breadcrumbs %>
-		<% if breadcrumb.has_key?("last_child") %>
-			<span class="title"><%= breadcrumb['name'] %></span>
-		<% else %>
-			<span class="title"><a href="<%= breadcrumb['url'] %>"><%= breadcrumb['name'] %></a> >> </span>
-		<% end %>
-<% end %>
+    <span class="title">
+    <% for breadcrumb in @breadcrumbs %>
+        <% if breadcrumb.has_key?("last_child") %>
+            <%= breadcrumb['name'] %>
+        <% else %>
+            <a href="<%= breadcrumb['url'] %>"><%= breadcrumb['name'] %></a> >> 
+        <% end %>
+    <% end %>
+    </div>
 </div>
+<div class="alert alert-warning">
+	This list will expire in <span id="countdown"></span>
+</div>
+
+
+<% content_for :javascript do %>
+    <script type="text/javascript" charset="utf-8">
+        $(function(){
+            <% if @list and not @list.expiry_date.nil? %>
+                var newYear = new Date(<%= @list.expiry_date.to_i * 1000 %>); 
+                $('#countdown').countdown({until: newYear,layout: '{dn} {dl}, {hn} {hl}, {mn} {ml}, and {sn} {sl}'});
+            <% end %>
+        });
+    </script>
+<% end %>

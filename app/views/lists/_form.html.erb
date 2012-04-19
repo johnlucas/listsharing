@@ -13,6 +13,24 @@
         <%= f.text_field :items_name, :class => 'text_field' %>
       </div>
     </div>
+    
+    <div class="control-group">
+        <%= f.label :offset, :class => 'control-label' %>
+        <div class="controls">
+            <label class="radio">
+                <%= f.radio_button :offset, "1" %>1h
+            </label>
+            <label class="radio">
+                <%= f.radio_button :offset, "24" %>1d
+            </label>
+            <label class="radio">
+                <%= f.radio_button :offset, "168" %>1w
+            </label>
+            <label class="radio">
+                <%= f.radio_button :offset, "0", :checked => true %>None
+            </label>            
+        </div>  
+    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>

@@ -12,7 +12,6 @@
 
     <!-- Le styles -->
     <%= stylesheet_link_tag "application", :media => "all" %>
-
     <!-- Le fav and touch icons -->
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -35,6 +34,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
+    <%= yield :javascript %>
+    
   </body>
 </html>

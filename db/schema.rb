@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402095119) do
+ActiveRecord::Schema.define(:version => 20120419120500) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(:version => 20120402095119) do
   create_table "lists", :force => true do |t|
     t.string   "name"
     t.string   "items_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "votes"
+    t.integer  "offset"
+    t.datetime "expiry_date"
   end
 
 end
