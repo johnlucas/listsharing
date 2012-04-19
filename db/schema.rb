@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419120500) do
+ActiveRecord::Schema.define(:version => 20120419154847) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120419120500) do
     t.integer  "votes"
     t.integer  "offset"
     t.datetime "expiry_date"
+    t.boolean  "expires"
   end
 
 end

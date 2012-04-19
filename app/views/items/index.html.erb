@@ -9,6 +9,17 @@
 	<%= flash[:notice] %>
 </div>
 <% end %>
+<% if @list.expires %>
+    <% if @list.expiry_date <= Time.now %>
+        <div class="alert alert-warning">
+        	This list has expired
+        </div>
+    <% else %>
+        <div class="alert alert-warning">
+        	This list will expire in <span id="countdown"></span>
+        </div>
+    <% end %>
+<% end %>
 
 <% @items.each do |item| %>
 <div class="row">
