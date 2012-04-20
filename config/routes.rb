@@ -1,4 +1,6 @@
 Lists::Application.routes.draw do
+  resources :users
+
   resources :lists do 
     resources :items do
       member do

@@ -33,7 +33,7 @@
     	<div class="span1" style="text-align:center">
     		<h3><%= item.votes %></h3>
     	</div>
-    	<div class="span11">
+    	<div class="span8">
     		<h3><%= link_to item.name, list_item_path(@list, item) %></h3>
     	</div>
          </tr>
@@ -46,10 +46,14 @@
     	</div>
     </div>
     <div class="row">
-    	<div class="span11 offset1"><%= item.description %></div>
+    	<div class="span8 offset1"><%= item.description %></div>
     </div>
 <% end %>
 
 <br/><br/>
 
 <%= link_to 'Add new ' + @list.name, new_list_item_path(@list), :class => 'btn btn-primary' %>
+
+<% content_for :sidebar do %>
+    <%= link_to 'Follow this list', new_user_path, :class => 'btn' %>
+<% end %>

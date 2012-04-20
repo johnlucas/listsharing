@@ -20,14 +20,20 @@
   <body>
 
 	<div class="container">
-		<div class="content">
+		<div class="row">
 		<%= render "breadcrumbs" %>
-		<%= yield %>
-			<footer>
-				<p class="pull-right"><br/>&copy; lists 2012</p>
-			</footer>
-
+	    </div>
+	    <div class="row">
+		    <div class="span9">
+		    <%= yield %>
+		    </div>
+		    <div class="span2 offset1">
+		        <%= yield :sidebar %>
+		    </div>
 		</div><!--/content-->
+		<footer>
+			<p class="pull-right"><br/>&copy; lists 2012</p>
+		</footer>
 	</div> <!-- /container -->
 
     <!-- Le javascript
