@@ -3,7 +3,7 @@
     <% for breadcrumb in @breadcrumbs %>
         <% if breadcrumb.has_key?("last_child") %>
             <%= breadcrumb['name'] %>
-            <%= link_to "edit", edit_list_path(@list), :class => 'edit_link' if @breadcrumbs.count > 1 %>
+            <%= link_to "edit", edit_list_path(@list), :class => 'edit_link' if @breadcrumbs.count == 2 %>
         <% else %>
             <a href="<%= breadcrumb['url'] %>"><%= breadcrumb['name'] %></a> >> 
         <% end %>
