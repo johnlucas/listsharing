@@ -22,33 +22,33 @@
 <% end %>
 
 <% @items.each do |item| %>
-<div class="row">
-	<div class="span1" style="text-align:center">
-		<%= link_to voteup_list_item_path(@list, item) do %>
-			<i class="icon-chevron-up"></i>
-		<% end %>
-	</div>
-</div>
-<div class="row">
-	<div class="span1" style="text-align:center">
-		<h3><%= item.votes %></h3>
-	</div>
-	<div class="span11">
-		<h3><%= link_to item.name, list_item_path(@list, item) %></h3>
-	</div>
-     </tr>
-</div>
-<div class="row">
-	<div class="span1" style="text-align:center">
-		<%= link_to votedown_list_item_path(@list, item) do %>
-			<i class="icon-chevron-down"></i>
-		<% end %>
-	</div>
-</div>
-<div class="row">
-	<div class="span11 offset1"><%= item.description %></div>
-</div>
-   <% end %>
+    <div class="row">
+    	<div class="span1" style="text-align:center">
+    		<%= link_to voteup_list_item_path(@list, item) do %>
+    			<i class="icon-chevron-up"></i>
+    		<% end %>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="span1" style="text-align:center">
+    		<h3><%= item.votes %></h3>
+    	</div>
+    	<div class="span11">
+    		<h3><%= link_to item.name, list_item_path(@list, item) %></h3>
+    	</div>
+         </tr>
+    </div>
+    <div class="row">
+    	<div class="span1" style="text-align:center">
+    		<%= link_to votedown_list_item_path(@list, item) do %>
+    			<i class="icon-chevron-down"></i>
+    		<% end %>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="span11 offset1"><%= item.description %></div>
+    </div>
+<% end %>
 
 <br/><br/>
 
