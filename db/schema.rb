@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423115651) do
+ActiveRecord::Schema.define(:version => 20120423180204) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120423115651) do
     t.integer  "offset"
     t.datetime "expiry_date"
     t.boolean  "expires"
+    t.boolean  "notified"
   end
 
   create_table "subscriptions", :force => true do |t|

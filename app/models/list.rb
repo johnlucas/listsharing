@@ -8,6 +8,7 @@ class List < ActiveRecord::Base
     def init
       self.votes ||= 0
       self.offset ||= 0
+      self.notified ||= false
     end
     
     def set_expiry_date
