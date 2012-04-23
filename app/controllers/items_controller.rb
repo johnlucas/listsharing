@@ -56,6 +56,10 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+        message = "Item '#{@item.name}' has been created!"
+        @list.subscriptions.each do |s| 
+          SubscriptionMailer.list_update(s,@list,message).deliver
+        end
         format.html { redirect_to list_item_path(@list,@item), notice: 'Item was successfully created.' }
       else
         format.html { render action: "new" }
