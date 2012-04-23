@@ -1,5 +1,5 @@
 Lists::Application.routes.draw do
-  resources :users
+  resources :subscriptions
 
   resources :lists do 
     resources :items do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420183153) do
+ActiveRecord::Schema.define(:version => 20120423113934) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120420183153) do
     t.boolean  "expires"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "subscriptions", :force => true do |t|
     t.string   "email"
     t.string   "name"
     t.datetime "created_at", :null => false
