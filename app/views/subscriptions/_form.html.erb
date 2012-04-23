@@ -1,7 +1,16 @@
-<%= form_for @subscription, :html => { :class => 'form-horizontal' } do |f| %>
+<% if flash[:alert] %>
+<div class="alert">
+	<a class="close" data-dismiss="alert">×</a>
+	<strong>Warning!</strong> <%= flash[:alert] %>
+</div>
+<% elsif flash[:notice] %>
+<div class="alert alert-info">
+	<a class="close" data-dismiss="alert">×</a>
+	<%= flash[:notice] %>
+</div>
+<% end %>
+<%= form_for [@list, @subscription], :url => list_subscriptions_path , :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Subscription</legend>
-
     <div class="control-group">
       <%= f.label :email, :class => 'control-label' %>
       <div class="controls">
@@ -18,7 +27,7 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', subscriptions_path, :class => 'btn' %>
+      <%= link_to 'Cancel', list_items_path(@list), :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

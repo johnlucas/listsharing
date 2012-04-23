@@ -2,10 +2,12 @@ class List < ActiveRecord::Base
   has_many :items
   after_initialize :init
   before_save :set_expiry_date
+  has_many :subscriptions
   
   private
     def init
       self.votes ||= 0
+      self.offset ||= 0
     end
     
     def set_expiry_date

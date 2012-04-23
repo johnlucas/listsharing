@@ -55,5 +55,5 @@
 <%= link_to 'Add new ' + @list.name, new_list_item_path(@list), :class => 'btn btn-primary' %>
 
 <% content_for :sidebar do %>
-    <%= link_to 'Follow this list', new_subscription_path, :class => 'btn' %>
+    <%= link_to 'Follow this list', new_list_subscription_path(@list), :class => 'btn' %>
 <% end %>

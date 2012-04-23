@@ -41,13 +41,16 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions.json
   def create
     @subscription = Subscription.new(params[:subscription])
+    @list = List.find(params[:list_id])
+    @list.subscriptions << @subscription
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.html { redirect_to list_items_path(@list), notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
       else
-        format.html { render action: "new" }
+        flash.now[:alert] = 'This email address has already subscribed to this list.'
+        format.html { render action: "new"}
         format.json { render json: @subscription.errors, status: :unprocessable_entity }
       end
     end

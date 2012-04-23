@@ -1,6 +1,4 @@
 Lists::Application.routes.draw do
-  resources :subscriptions
-
   resources :lists do 
     resources :items do
       member do
@@ -12,6 +10,7 @@ Lists::Application.routes.draw do
       get 'voteup'
       get 'votedown'
     end
+    resources :subscriptions
   end
   
   # The priority is based upon order of creation:

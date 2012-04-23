@@ -5,5 +5,6 @@ class Item < ActiveRecord::Base
   
   def init
     self.votes ||= 0
+    self.description ||= ""
   end
 end
