@@ -21,6 +21,7 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    puts @list.to_yaml
 
     respond_to do |format|
       format.html # new.html.erb
